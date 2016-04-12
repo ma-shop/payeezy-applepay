@@ -6,6 +6,7 @@
     </js-module>
     <platform name="ios">
         <framework src="PassKit.framework" />
+        <framework src="src/ios/PayeezyClient.framework" />
         <header-file src="src/ios/CDVApplePay.h" />
         <source-file src="src/ios/CDVApplePay.m" />
         <config-file target="config.xml" parent="/*">
