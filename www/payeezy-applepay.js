@@ -29,17 +29,20 @@ var ApplePay = {
         label
         amount
      }
-     * @param merchant_info - Object {
+     * @param config - Object {
         api_key
         api_secret
-        merchant_token
-        merchant_ref
-        merchant_id
+        country_code
+        currency_code
         environment
+        merchant_id
+        merchant_ref
+        merchant_token
+        transaction_type
      }
      **/
-    makePaymentRequest: function(order_items, merchant_info, successCallback, errorCallback) {
-        exec(successCallback || this.successCallback, errorCallback || this.failureCallback, 'ApplePay', 'makePaymentRequest', [order_items, merchant_info]);
+    makePaymentRequest: function(order_items, config, successCallback, errorCallback) {
+        exec(successCallback || this.successCallback, errorCallback || this.failureCallback, 'ApplePay', 'makePaymentRequest', [order_items, config]);
     }
 };
 

@@ -10,7 +10,13 @@
 @interface CDVApplePay: CDVPlugin <PKPaymentAuthorizationViewControllerDelegate>
 
 @property (nonatomic, strong) NSString* paymentCallbackId;
-@property (nonatomic) NSMutableArray* summaryItems;
+@property (nonatomic) NSString* api_key;
+@property (nonatomic) NSString* api_secret;
+@property (nonatomic) NSString* merchant_token;
+@property (nonatomic) NSString* merchant_ref;
+@property (nonatomic) NSString* merchant_id;
+@property (nonatomic) NSString* environment;
+@property (nonatomic) NSString* transaction_type;
 
 - (void)makePaymentRequest:(CDVInvokedUrlCommand*)command;
 - (void)canMakePayments:(CDVInvokedUrlCommand*)command;
