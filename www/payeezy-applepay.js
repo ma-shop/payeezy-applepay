@@ -2,6 +2,14 @@ var exec = require('cordova/exec');
 
 var ApplePay = {
 
+    successCallback: function() {
+        console.log(arguments);
+    },
+
+    failureCallback: function() {
+        console.log(arguments);
+    },
+
     /**
      * @method canMakePayments
      * @description - Detect if iPhone supports Apple Pay and if there is a card available.
@@ -9,7 +17,7 @@ var ApplePay = {
      * @param errorCallback - Function  
      **/
     canMakePayments: function(successCallback, errorCallback) {
-        exec(successCallback, errorCallback, 'ApplePay', 'canMakePayments');
+        exec(successCallback || this.successCallback, errorCallback || this.failureCallback, 'ApplePay', 'canMakePayments');
     },
 
     /**
@@ -17,7 +25,7 @@ var ApplePay = {
      * @description - Create payment view controller with order details and given API info
      * @param successCallback - Function  
      * @param errorCallback - Function  
-     * @param order_details - Object {
+     * @param order_items - Array of Objects {
         label
         amount
      }
@@ -30,8 +38,8 @@ var ApplePay = {
         environment
      }
      **/
-    makePaymentRequest: function(successCallback, errorCallback, order_details, merchant_info) {
-        exec(successCallback, errorCallback, 'ApplePay', 'makePaymentRequest', [order_details, merchant_info]);
+    makePaymentRequest: function(order_items, merchant_info, successCallback, errorCallback) {
+        exec(successCallback || this.successCallback, errorCallback || this.failureCallback, 'ApplePay', 'makePaymentRequest', [order_items, merchant_info]);
     }
 };
 
