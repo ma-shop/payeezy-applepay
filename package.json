@@ -1,0 +1,25 @@
+{
+  "name": "cordova-plugin-applepay-payeezy",
+  "version": "1.0.0",
+  "description": "Cordova plugin for ApplePay using Payeezy (First Data)",
+  "cordova": {
+    "id": "cordova-plugin-applepay-payeezy",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarketAmericaMobile/payeezy-applepay.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "Trevor Brindle",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MarketAmericaMobile/payeezy-applepay/issues"
+  },
+  "homepage": "https://github.com/MarketAmericaMobile/payeezy-applepay#readme"
+}
