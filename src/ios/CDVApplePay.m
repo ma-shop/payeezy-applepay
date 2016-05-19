@@ -42,23 +42,22 @@
     }
     
     self.paymentCallbackId = command.callbackId;
-    self.summaryItems = [self itemsFromArguments:command.arguments];
     
     PKPaymentRequest *request = [PKPaymentRequest new];
-    request.paymentSummaryItems = self.summaryItems;
-    
-    if ([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){9, 0, 0}]) {
-        request.supportedNetworks = kSupportedNetworks9;
-    } else {
-        request.supportedNetworks = kSupportedNetworks8;
-    }
 
+    request.paymentSummaryItems = [self itemsFromArguments:command.arguments];
     request.requiredBillingAddressFields = PKAddressFieldAll;
     request.requiredShippingAddressFields = PKAddressFieldNone;
     request.merchantCapabilities = PKMerchantCapability3DS;
     request.merchantIdentifier = kApplePayMerchantId;
     request.countryCode = @"US";
     request.currencyCode = @"USD";
+
+    if ([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){9, 0, 0}]) {
+        request.supportedNetworks = kSupportedNetworks9;
+    } else {
+        request.supportedNetworks = kSupportedNetworks8;
+    }
     
     PKPaymentAuthorizationViewController *authVC = [[PKPaymentAuthorizationViewController alloc] initWithPaymentRequest:request];
     
