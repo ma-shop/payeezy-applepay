@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="com.ma.payeezyapplepay" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="cordova-plugin-applepay-payeezy" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>payeezy-applepay</name>
     <js-module name="payeezy-applepay" src="www/payeezy-applepay.js">
         <clobbers target="cordova.plugins.ApplePay" />
     </js-module>
     <platform name="ios">
         <framework src="PassKit.framework" />
-        <framework src="src/ios/PayeezyClient.framework" />
+        <framework src="src/ios/PayeezyClient.framework" custom="true"/>
         <source-file src="src/ios/CDVApplePay.h" />
         <source-file src="src/ios/CDVApplePay.m" />
         <config-file target="config.xml" parent="/*">
