@@ -35,19 +35,16 @@
 
 - (void)makePaymentRequest:(CDVInvokedUrlCommand*)command
 {
-    self.paymentCallbackId = command.callbackId;
-    
-    NSLog(@"ApplePay canMakePayments == %s", [PKPaymentAuthorizationViewController canMakePayments]? "true" : "false");
     if ([PKPaymentAuthorizationViewController canMakePayments] == NO) {
         CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString: @"This device cannot make payments."];
         [self.commandDelegate sendPluginResult:result callbackId:self.paymentCallbackId];
         return;
     }
     
-    PKPaymentRequest *request = [PKPaymentRequest new];
-    
+    self.paymentCallbackId = command.callbackId;
     self.summaryItems = [self itemsFromArguments:command.arguments];
     
+    PKPaymentRequest *request = [PKPaymentRequest new];
     request.paymentSummaryItems = self.summaryItems;
     
     if ([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){9, 0, 0}]) {
